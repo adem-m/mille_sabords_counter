@@ -28,7 +28,6 @@ class PlayerItem extends StatelessWidget {
       },
     );
 
-    // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: const Text("Delete player"),
       content: Text("Are you sure you want to delete $name ?"),

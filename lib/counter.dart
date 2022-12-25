@@ -18,7 +18,6 @@ class _CounterState extends State<Counter> {
 
     widget.resetStream.listen((_) {
       setState(() {
-        print("score reset");
         score = 0;
       });
     });
