@@ -20,6 +20,7 @@ class _AddPlayerState extends State<AddPlayer> {
           return AlertDialog(
             title: const Text("Enter the player's name"),
             content: TextField(
+              autofocus: true,
               textCapitalization: TextCapitalization.words,
               onChanged: (value) => {name = value},
               controller: _textFieldController,
