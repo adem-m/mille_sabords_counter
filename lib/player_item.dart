@@ -1,10 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mille_sabords_counter/counter.dart';
 
 class PlayerItem extends StatelessWidget {
   final String name;
-
   final void Function(PlayerItem) onLongPress;
+  final Stream<void> resetStream;
+
+  const PlayerItem(
+      {required this.name,
+      required this.onLongPress,
+      Key? key,
+      required this.resetStream})
+      : super(key: key);
 
   showAlertDialog(BuildContext context) {
     Widget cancelButton = TextButton(
@@ -37,9 +46,6 @@ class PlayerItem extends StatelessWidget {
     );
   }
 
-  const PlayerItem({required this.name, required this.onLongPress, Key? key})
-      : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -58,9 +64,9 @@ class PlayerItem extends StatelessWidget {
               ),
             ),
           ),
-          const Expanded(
+          Expanded(
             flex: 2,
-            child: Counter(),
+            child: Counter(resetStream: resetStream),
           ),
         ],
       ),

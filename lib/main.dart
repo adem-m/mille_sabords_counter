@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mille_sabords_counter/add_player.dart';
 import 'package:mille_sabords_counter/player_item.dart';
@@ -15,6 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Widget> playerItems = List.empty(growable: true);
+  StreamController<void> resetStream = StreamController.broadcast();
 
   void addPlayer(String name) {
     setState(() {
@@ -22,6 +25,7 @@ class _MyAppState extends State<MyApp> {
         PlayerItem(
           name: name,
           onLongPress: removePlayer,
+          resetStream: resetStream.stream,
         ),
       );
     });
@@ -33,6 +37,10 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void resetScores() {
+    resetStream.add(null);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,6 +48,12 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text("Mille Sabords"),
+          actions: [
+            IconButton(
+              onPressed: resetScores,
+              icon: const Icon(Icons.refresh),
+            )
+          ],
         ),
         body: SafeArea(
           child: ListView(

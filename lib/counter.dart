@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Counter extends StatefulWidget {
-  const Counter({Key? key}) : super(key: key);
+  final Stream<void> resetStream;
+
+  const Counter({Key? key, required this.resetStream}) : super(key: key);
 
   @override
   State<Counter> createState() => _CounterState();
@@ -9,6 +11,18 @@ class Counter extends StatefulWidget {
 
 class _CounterState extends State<Counter> {
   int score = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    widget.resetStream.listen((_) {
+      setState(() {
+        print("score reset");
+        score = 0;
+      });
+    });
+  }
 
   void upScore() {
     setState(() {
