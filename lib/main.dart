@@ -5,7 +5,15 @@ import 'package:mille_sabords_counter/add_player.dart';
 import 'package:mille_sabords_counter/player_item.dart';
 
 void main() {
-  runApp(const MaterialApp(home: MyApp()));
+  runApp(MaterialApp(
+    home: const MyApp(),
+    theme: ThemeData(
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        primary: const Color(0xFFFDA122),
+        secondary: Colors.red,
+      ),
+    ),
+  ));
 }
 
 class MyApp extends StatefulWidget {

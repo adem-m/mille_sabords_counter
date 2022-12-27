@@ -11,6 +11,8 @@ class Counter extends StatefulWidget {
 
 class _CounterState extends State<Counter> {
   int score = 0;
+  final Color BACKGROUND_COLOR = const Color.fromARGB(255, 150, 25, 0);
+  final Color FONT_COLOR = Colors.white;
 
   @override
   void initState() {
@@ -43,12 +45,13 @@ class _CounterState extends State<Counter> {
   Widget build(BuildContext context) {
     return Material(
       borderRadius: BorderRadius.circular(10),
-      color: const Color.fromARGB(100, 100, 100, 111),
+      color: BACKGROUND_COLOR,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
             icon: const Icon(Icons.remove),
+            color: FONT_COLOR,
             onPressed: downScore,
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(15),
@@ -58,10 +61,12 @@ class _CounterState extends State<Counter> {
             score.toString(),
             style: const TextStyle(
               fontSize: 20,
+              color: Colors.white,
             ),
           ),
           IconButton(
             icon: const Icon(Icons.add),
+            color: FONT_COLOR,
             onPressed: upScore,
           ),
         ],
