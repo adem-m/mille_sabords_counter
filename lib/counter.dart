@@ -60,7 +60,7 @@ class _CounterState extends State<Counter> {
           Text(
             score.toString(),
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 35,
               color: Colors.white,
             ),
           ),

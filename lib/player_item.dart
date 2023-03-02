@@ -52,19 +52,19 @@ class PlayerItem extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            flex: 3,
+            flex: 5,
             child: GestureDetector(
               onLongPress: () => showAlertDialog(context),
               child: Text(
                 name,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 25,
                 ),
               ),
             ),
           ),
           Expanded(
-            flex: 2,
+            flex: 6,
             child: Counter(resetStream: resetStream),
           ),
         ],
